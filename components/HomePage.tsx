@@ -9,6 +9,7 @@ import { Footer } from "@/sections/Footer";
 import { Header } from "@/sections/Header";
 import { Hero } from "@/sections/Hero";
 import { PriceCTA } from "@/sections/PriceCTA";
+import { Pricing } from "@/sections/Pricing";
 import { Process } from "@/sections/Process";
 import { Projects } from "@/sections/Projects";
 import { Services } from "@/sections/Services";
@@ -46,6 +47,7 @@ export function HomePage() {
       <main>
         <Hero t={t} />
         <Services t={t} />
+        <Pricing t={t} />
         <Projects locale={locale} t={t} />
         <WhyTalup t={t} />
         <Process t={t} />

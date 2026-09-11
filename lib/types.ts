@@ -23,6 +23,21 @@ export type Translation = {
     orderCta: string;
     items: Array<{ title: string; description: string; features: string[] }>;
   };
+  pricing: {
+    label: string;
+    heading: string;
+    subtitle: string;
+    note: string;
+    plans: Array<{
+      name: string;
+      badge?: string;
+      price: string;
+      description: string;
+      includes: string[];
+      cta: string;
+      message: string;
+    }>;
+  };
   projects: {
     label: string;
     heading: string;
