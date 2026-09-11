@@ -58,14 +58,6 @@ export type Translation = {
     heading: string;
     steps: Array<{ title: string; description: string }>;
   };
-  priceCta: {
-    label: string;
-    heading: string;
-    text: string;
-    note: string;
-    button: string;
-    message: string;
-  };
   about: {
     heading: string;
     paragraphs: string[];

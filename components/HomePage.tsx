@@ -8,7 +8,6 @@ import { FinalCTA } from "@/sections/FinalCTA";
 import { Footer } from "@/sections/Footer";
 import { Header } from "@/sections/Header";
 import { Hero } from "@/sections/Hero";
-import { PriceCTA } from "@/sections/PriceCTA";
 import { Pricing } from "@/sections/Pricing";
 import { Process } from "@/sections/Process";
 import { Projects } from "@/sections/Projects";
@@ -51,7 +50,6 @@ export function HomePage() {
         <Projects locale={locale} t={t} />
         <WhyTalup t={t} />
         <Process t={t} />
-        <PriceCTA t={t} />
         <About t={t} />
         <FinalCTA t={t} />
       </main>
