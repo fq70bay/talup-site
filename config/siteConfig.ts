@@ -4,6 +4,10 @@ export const siteConfig = {
   brandName: "TalUp Project",
   shortName: "TalUp",
   slogan: "RISE BEYOND LIMITS",
+  url: "https://talup-project.vercel.app",
+  seoTitle: "TalUp — Астанада сайт жасау | Landing Page, бизнес сайт, портфолио",
+  seoDescription:
+    "TalUp — Астана және Қазақстан бойынша бизнеске арналған сайттар жасайтын web studio. Landing page, бизнес сайт, портфолио, KZ/RU, mobile responsive және WhatsApp интеграциясы.",
   email: "farhatqazaq@gmail.com",
   phone: {
     label: "+7 776 748 41 14",

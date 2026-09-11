@@ -1,11 +1,18 @@
 import type { MetadataRoute } from "next";
+import { siteConfig } from "@/config/siteConfig";
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: {
-      userAgent: "*",
-      allow: "/",
-    },
-    sitemap: "https://talup-project.vercel.app/sitemap.xml",
+    rules: [
+      {
+        userAgent: "*",
+        allow: "/",
+      },
+      {
+        userAgent: "Googlebot",
+        allow: "/",
+      },
+    ],
+    sitemap: `${siteConfig.url}/sitemap.xml`,
   };
 }

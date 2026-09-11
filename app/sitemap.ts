@@ -1,10 +1,11 @@
 import type { MetadataRoute } from "next";
+import { siteConfig } from "@/config/siteConfig";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://talup-project.vercel.app",
-      lastModified: new Date("2026-09-10"),
+      url: siteConfig.url,
+      lastModified: new Date("2026-09-11"),
       changeFrequency: "monthly",
       priority: 1,
     },
