@@ -51,6 +51,7 @@ export const kz: Translation = {
     subtitle: "Барлық пакетке mobile responsive және сайтты жариялау кіреді.",
     note:
       "Қосымша функционал, күрделі интеграциялар және жеке талаптар жоба көлеміне қарай бөлек есептеледі.",
+    astanaLink: "Астанада сайт жасау",
     plans: [
       {
         name: "START",
@@ -169,6 +170,7 @@ export const kz: Translation = {
     phoneLabel: "Phone",
     instagramLabel: "Instagram",
     whatsappLabel: "WhatsApp",
+    astanaLink: "Астанада сайт жасау",
     copyright: "© 2026 TalUp. Барлық құқықтар қорғалған.",
   },
   whatsappMessage: "Сәлеметсіз бе! TalUp Project арқылы сайт жасау бойынша ақпарат алғым келеді.",

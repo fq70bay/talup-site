@@ -51,6 +51,7 @@ export const ru: Translation = {
     subtitle: "В каждый пакет входит mobile responsive и публикация сайта.",
     note:
       "Дополнительный функционал, сложные интеграции и индивидуальные требования рассчитываются отдельно по объему проекта.",
+    astanaLink: "Создание сайтов в Астане",
     plans: [
       {
         name: "START",
@@ -166,6 +167,7 @@ export const ru: Translation = {
     phoneLabel: "Phone",
     instagramLabel: "Instagram",
     whatsappLabel: "WhatsApp",
+    astanaLink: "Создание сайтов в Астане",
     copyright: "© 2026 TalUp. Все права защищены.",
   },
   whatsappMessage: "Здравствуйте! Хочу узнать подробнее о создании сайта через TalUp Project.",

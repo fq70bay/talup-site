@@ -89,6 +89,12 @@ export function Footer({ t }: { t: Translation }) {
           </div>
         </div>
         <div className="mt-5 border-t border-[rgba(8,46,99,0.1)] pt-4 sm:mt-6">
+          <a
+            className="mb-3 inline-flex text-sm font-semibold text-[#082E63] underline-offset-4 transition hover:text-[#C99B3C] hover:underline"
+            href="/site-zhasau-astana"
+          >
+            {t.footer.astanaLink}
+          </a>
           <p className="max-w-[calc(100%-3.5rem)] text-sm text-[#0B2340]/50 sm:max-w-none">
             {t.footer.copyright}
           </p>

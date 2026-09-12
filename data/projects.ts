@@ -46,7 +46,7 @@ export const projects: Project[] = [
     category: "PORTFOLIO WEBSITE",
     url: "https://farhat-teacher-portfolio.vercel.app/",
     displayUrl: "farhat-teacher-portfolio.vercel.app",
-    image: "/projects/farhat-teacher-portfolio-preview.png",
+    image: "/images/farhat-teacher-portfolio-v2.png",
     live: true,
     tags: ["Portfolio", "Responsive", "Personal Brand"],
     description: {

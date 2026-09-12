@@ -91,7 +91,10 @@ export function Pricing({ t }: { t: Translation }) {
         </div>
 
         <p className="mt-5 max-w-3xl text-sm leading-6 text-[#0B2340]/58">
-          {t.pricing.note}
+          {t.pricing.note}{" "}
+          <a className="font-semibold text-[#082E63] underline-offset-4 hover:underline" href="/site-zhasau-astana">
+            {t.pricing.astanaLink}
+          </a>
         </p>
       </div>
     </section>

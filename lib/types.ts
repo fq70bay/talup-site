@@ -28,6 +28,7 @@ export type Translation = {
     heading: string;
     subtitle: string;
     note: string;
+    astanaLink: string;
     plans: Array<{
       name: string;
       badge?: string;
@@ -74,6 +75,7 @@ export type Translation = {
     phoneLabel: string;
     instagramLabel: string;
     whatsappLabel: string;
+    astanaLink: string;
     copyright: string;
   };
   whatsappMessage: string;
