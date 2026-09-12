@@ -19,8 +19,8 @@ export const siteConfig = {
     url: "https://wa.me/77767484114",
   },
   instagram: {
-    label: "@fq_70bay",
-    url: "https://www.instagram.com/fq_70bay",
+    label: "@talupstudio",
+    url: "https://www.instagram.com/talupstudio/",
   },
 };
 
