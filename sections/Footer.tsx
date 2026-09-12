@@ -14,7 +14,13 @@ function isFooterContact(contact: FooterContact | null): contact is FooterContac
   return contact !== null;
 }
 
-export function Footer({ t }: { t: Translation }) {
+export function Footer({
+  bottomLinks,
+  t,
+}: {
+  bottomLinks?: Array<{ href: string; label: string }>;
+  t: Translation;
+}) {
   const emailUrl = getEmailLink();
   const whatsappUrl = siteConfig.whatsapp.url;
   const contacts: FooterContact[] = [
@@ -53,6 +59,8 @@ export function Footer({ t }: { t: Translation }) {
       : null,
   ].filter(isFooterContact);
 
+  const footerLinks = bottomLinks ?? [{ href: "/site-zhasau-astana", label: t.footer.astanaLink }];
+
   return (
     <footer className="border-t border-[rgba(8,46,99,0.1)] bg-[#F7F7F5] py-7 sm:py-9">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
@@ -89,12 +97,17 @@ export function Footer({ t }: { t: Translation }) {
           </div>
         </div>
         <div className="mt-5 border-t border-[rgba(8,46,99,0.1)] pt-4 sm:mt-6">
-          <a
-            className="mb-3 inline-flex text-sm font-semibold text-[#082E63] underline-offset-4 transition hover:text-[#C99B3C] hover:underline"
-            href="/site-zhasau-astana"
-          >
-            {t.footer.astanaLink}
-          </a>
+          <nav className="mb-3 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold text-[#082E63]">
+            {footerLinks.map((link) => (
+              <a
+                className="underline-offset-4 transition hover:text-[#C99B3C] hover:underline"
+                href={link.href}
+                key={link.href}
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
           <p className="max-w-[calc(100%-3.5rem)] text-sm text-[#0B2340]/50 sm:max-w-none">
             {t.footer.copyright}
           </p>

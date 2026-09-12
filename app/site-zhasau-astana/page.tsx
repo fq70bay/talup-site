@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
+import { AnimatedProjectPreview } from "@/components/AnimatedProjectPreview";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { Button } from "@/components/ui/Button";
@@ -8,6 +7,7 @@ import { getWhatsAppLink, siteConfig } from "@/config/siteConfig";
 import { projects } from "@/data/projects";
 import { kz } from "@/locales/kz";
 import { Footer } from "@/sections/Footer";
+import { AstanaHeader } from "./AstanaHeader";
 
 const pageUrl = `${siteConfig.url}/site-zhasau-astana`;
 const whatsappMessage = "Сәлеметсіз бе! Астанада сайт жасау бойынша ақпарат алғым келеді.";
@@ -62,19 +62,47 @@ const pricePlans = [
     name: "START",
     price: "79 000 ₸",
     text: "Портфолио, визитка және шағын сайт.",
+    cta: "START таңдау",
     message: "Сәлеметсіз бе! TalUp START пакеті бойынша сайт жасатқым келеді.",
+    includes: [
+      "1–3 негізгі бөлім",
+      "Портфолио немесе визитка",
+      "Mobile responsive",
+      "WhatsApp / байланыс",
+      "Vercel-де жариялау",
+    ],
   },
   {
     name: "BUSINESS",
     price: "129 000 ₸",
     text: "Толық бизнес landing page.",
+    cta: "BUSINESS таңдау",
     message: "Сәлеметсіз бе! TalUp BUSINESS пакеті бойынша сайт жасатқым келеді.",
+    badge: "ТАНЫМАЛ",
+    includes: [
+      "4–6 негізгі бөлім",
+      "Қызметтер және артықшылықтар",
+      "WhatsApp интеграциясы",
+      "Mobile responsive",
+      "Негізгі SEO",
+      "Vercel-де жариялау",
+    ],
   },
   {
     name: "PRO",
     price: "179 000 ₸",
     text: "KZ/RU, көбірек блок және кеңейтілген функционал.",
+    cta: "PRO таңдау",
     message: "Сәлеметсіз бе! TalUp PRO пакеті бойынша сайт жасатқым келеді.",
+    includes: [
+      "KZ / RU",
+      "6+ бөлім",
+      "Кеңейтілген функционал",
+      "WhatsApp интеграциясы",
+      "Mobile responsive",
+      "Домен қосуға көмек",
+      "Негізгі SEO",
+    ],
   },
 ];
 
@@ -140,43 +168,27 @@ const caseCopy: Record<string, { type: string; text: string }> = {
   },
 };
 
+const footerLinks = [
+  { href: "/", label: "Басты бет" },
+  { href: "#services", label: "Қызметтер" },
+  { href: "#pricing", label: "Баға" },
+  { href: "#cases", label: "Жобалар" },
+];
+
+function SectionHeading({ children }: { children: string }) {
+  return <h2 className="text-3xl font-semibold leading-tight text-[#071B33] sm:text-4xl">{children}</h2>;
+}
+
 export default function AstanaWebsiteDevelopmentPage() {
   const whatsappUrl = getWhatsAppLink(whatsappMessage);
   const pageProjects = projects.filter((project) => project.id in caseCopy);
 
   return (
     <>
+      <AstanaHeader whatsappUrl={whatsappUrl} />
       <main className="bg-[#F7F7F5] text-[#0B2340]">
-        <header className="border-b border-[rgba(8,46,99,0.1)] bg-[#F7F7F5]/95">
-          <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8">
-            <Link className="text-sm font-extrabold uppercase tracking-[0.18em] text-[#071B33]" href="/">
-              TalUp
-            </Link>
-            <nav className="hidden items-center gap-6 text-sm font-semibold text-[#0B2340]/72 md:flex">
-              <a className="transition hover:text-[#C99B3C]" href="#pricing">
-                Баға
-              </a>
-              <a className="transition hover:text-[#C99B3C]" href="#cases">
-                Жобалар
-              </a>
-              <a className="transition hover:text-[#C99B3C]" href="#faq">
-                FAQ
-              </a>
-            </nav>
-            <a
-              className="inline-flex min-h-10 items-center gap-2 rounded-md border border-[#25D366] bg-[#25D366] px-4 text-sm font-semibold text-[#06351D] transition hover:bg-[#1DB954]"
-              href={whatsappUrl}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <WhatsAppIcon className="h-4 w-4" />
-              WhatsApp
-            </a>
-          </div>
-        </header>
-
-        <section className="border-b border-[rgba(8,46,99,0.08)] px-5 py-16 sm:px-8 sm:py-20 lg:py-24">
-          <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+        <section className="border-b border-[rgba(8,46,99,0.08)] px-5 py-12 sm:px-8 sm:py-16 lg:py-20">
+          <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_0.92fr] lg:items-center">
             <div>
               <p className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-[#C99B3C]">
                 TALUP • WEB STUDIO
@@ -192,7 +204,7 @@ export default function AstanaWebsiteDevelopmentPage() {
                 Қазақша және орысша, мобильге бейімделген, WhatsApp өтінімімен және іске
                 қосуға дайын.
               </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                 <Button className="gap-2" href={whatsappUrl} rel="noopener noreferrer" target="_blank" variant="whatsapp">
                   <WhatsAppIcon className="h-4 w-4" />
                   WhatsApp арқылы тапсырыс беру
@@ -208,36 +220,36 @@ export default function AstanaWebsiteDevelopmentPage() {
             <div className="rounded-lg border border-[rgba(8,46,99,0.12)] bg-white p-3">
               <div className="grid gap-3">
                 {pageProjects.map((project) => (
-                  <a
-                    className="group block overflow-hidden rounded-md border border-[rgba(8,46,99,0.1)] bg-[#F7F7F5]"
-                    href={project.url}
+                  <AnimatedProjectPreview
+                    displayUrl={project.displayUrl}
+                    flush
+                    image={project.image}
+                    imageMode="cover"
                     key={project.id}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    <div className="relative aspect-[16/9] overflow-hidden bg-[#071B33]">
-                      <Image
-                        alt={`${project.title} сайтының preview суреті`}
-                        className="h-full w-full object-cover object-left-top transition duration-200 group-hover:scale-[1.015]"
-                        height={900}
-                        src={project.image}
-                        width={1440}
-                      />
-                    </div>
-                  </a>
+                    liveBadge="LIVE PROJECT ↗"
+                    title={project.title}
+                    url={project.url}
+                    variant="card"
+                  />
                 ))}
               </div>
             </div>
           </div>
         </section>
 
-        <section className="px-5 py-14 sm:px-8 sm:py-16">
+        <section className="px-5 py-12 sm:px-8 sm:py-16" id="services">
           <div className="mx-auto max-w-7xl">
-            <h2 className="text-3xl font-semibold text-[#071B33]">Қандай сайттар жасаймыз?</h2>
+            <SectionHeading>Қандай сайттар жасаймыз?</SectionHeading>
             <div className="mt-7 grid gap-4 md:grid-cols-3">
-              {siteTypes.map((item) => (
-                <article className="rounded-lg border border-[rgba(8,46,99,0.12)] bg-white p-5" key={item.title}>
-                  <h3 className="text-xl font-semibold text-[#071B33]">{item.title}</h3>
+              {siteTypes.map((item, index) => (
+                <article
+                  className="rounded-lg border border-[rgba(8,46,99,0.12)] bg-white p-5 transition duration-200 hover:-translate-y-[3px] hover:border-[rgba(201,155,60,0.45)]"
+                  key={item.title}
+                >
+                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#C99B3C]">
+                    0{index + 1}
+                  </p>
+                  <h3 className="mt-4 text-xl font-semibold text-[#071B33]">{item.title}</h3>
                   <p className="mt-3 text-sm leading-6 text-[#0B2340]/70">{item.text}</p>
                 </article>
               ))}
@@ -245,34 +257,73 @@ export default function AstanaWebsiteDevelopmentPage() {
           </div>
         </section>
 
-        <section className="border-y border-[rgba(8,46,99,0.08)] bg-white px-5 py-14 sm:px-8 sm:py-16" id="pricing">
+        <section className="border-y border-[rgba(8,46,99,0.08)] bg-white px-5 py-12 sm:px-8 sm:py-16" id="pricing">
           <div className="mx-auto max-w-7xl">
-            <h2 className="text-3xl font-semibold text-[#071B33]">Сайт жасау бағасы</h2>
+            <SectionHeading>Сайт жасау бағасы</SectionHeading>
             <div className="mt-7 grid gap-4 lg:grid-cols-3">
-              {pricePlans.map((plan) => (
-                <article className="flex h-full flex-col rounded-lg border border-[rgba(8,46,99,0.12)] bg-[#F7F7F5] p-5" key={plan.name}>
-                  <h3 className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#C99B3C]">{plan.name}</h3>
-                  <p className="mt-4 text-4xl font-semibold text-[#071B33]">{plan.price}</p>
-                  <p className="mt-3 flex-1 text-sm leading-6 text-[#0B2340]/70">{plan.text}</p>
-                  <Button className="mt-6 w-full gap-2" href={getWhatsAppLink(plan.message)} rel="noopener noreferrer" target="_blank" variant="whatsapp">
-                    <WhatsAppIcon className="h-4 w-4" />
-                    {plan.name} таңдау
-                  </Button>
-                </article>
-              ))}
+              {pricePlans.map((plan) => {
+                const highlighted = plan.name === "BUSINESS";
+
+                return (
+                  <article
+                    className={`flex h-full flex-col rounded-lg border p-5 transition duration-200 hover:-translate-y-[3px] sm:p-6 ${
+                      highlighted
+                        ? "border-[#C99B3C]/70 bg-white ring-1 ring-[#C99B3C]/35"
+                        : "border-[rgba(8,46,99,0.12)] bg-[#F7F7F5]"
+                    }`}
+                    key={plan.name}
+                  >
+                    <div className="flex min-h-7 items-start justify-between gap-3">
+                      <h3 className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#C99B3C]">
+                        {plan.name}
+                      </h3>
+                      {plan.badge ? (
+                        <span className="rounded border border-[#C99B3C]/35 bg-[#C99B3C]/10 px-2 py-1 text-[10px] font-extrabold uppercase tracking-[0.12em] text-[#071B33]">
+                          {plan.badge}
+                        </span>
+                      ) : null}
+                    </div>
+                    <p className="mt-5 text-4xl font-semibold text-[#071B33]">{plan.price}</p>
+                    <p className="mt-3 text-sm leading-6 text-[#0B2340]/70">{plan.text}</p>
+                    <ul className="mt-5 flex-1 space-y-2.5 text-sm font-medium text-[#0B2340]/74">
+                      {plan.includes.map((item) => (
+                        <li className="flex gap-2.5" key={item}>
+                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#C99B3C]" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Button
+                      className={`mt-6 w-full gap-2 ${
+                        highlighted
+                          ? ""
+                          : "border-[#C99B3C]/45 text-[#071B33] hover:bg-[#C99B3C] hover:text-white"
+                      }`}
+                      href={getWhatsAppLink(plan.message)}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      variant={highlighted ? "whatsapp" : "secondary"}
+                    >
+                      <WhatsAppIcon className="h-4 w-4" />
+                      {plan.cta}
+                    </Button>
+                  </article>
+                );
+              })}
             </div>
           </div>
         </section>
 
-        <section className="px-5 py-14 sm:px-8 sm:py-16">
+        <section className="px-5 py-12 sm:px-8 sm:py-16">
           <div className="mx-auto max-w-7xl">
-            <h2 className="text-3xl font-semibold text-[#071B33]">
-              TalUp-пен сайт жасаудың артықшылықтары
-            </h2>
+            <SectionHeading>TalUp-пен сайт жасаудың артықшылықтары</SectionHeading>
             <div className="mt-7 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-              {advantages.map((item) => (
+              {advantages.map((item, index) => (
                 <article className="rounded-lg border border-[rgba(8,46,99,0.12)] bg-white p-5" key={item.title}>
-                  <h3 className="text-lg font-semibold text-[#071B33]">{item.title}</h3>
+                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#C99B3C]">
+                    0{index + 1}
+                  </p>
+                  <h3 className="mt-4 text-lg font-semibold text-[#071B33]">{item.title}</h3>
                   <p className="mt-3 text-sm leading-6 text-[#0B2340]/70">{item.text}</p>
                 </article>
               ))}
@@ -280,39 +331,42 @@ export default function AstanaWebsiteDevelopmentPage() {
           </div>
         </section>
 
-        <section className="border-y border-[rgba(8,46,99,0.08)] bg-white px-5 py-14 sm:px-8 sm:py-16" id="cases">
+        <section className="border-y border-[rgba(8,46,99,0.08)] bg-white px-5 py-12 sm:px-8 sm:py-16" id="cases">
           <div className="mx-auto max-w-7xl">
-            <h2 className="text-3xl font-semibold text-[#071B33]">Жасалған сайттар</h2>
-            <div className="mt-7 grid gap-5 lg:grid-cols-2">
+            <SectionHeading>Жасалған сайттар</SectionHeading>
+            <div className="mt-7 grid items-stretch gap-6 lg:grid-cols-2">
               {pageProjects.map((project) => (
-                <article className="overflow-hidden rounded-lg border border-[rgba(8,46,99,0.12)] bg-[#F7F7F5]" key={project.id}>
-                  <a href={project.url} rel="noopener noreferrer" target="_blank">
-                    <div className="relative aspect-[16/9] overflow-hidden bg-[#071B33]">
-                      <Image
-                        alt={`${project.title} жобасының screenshot preview суреті`}
-                        className="h-full w-full object-cover object-left-top"
-                        height={900}
-                        src={project.image}
-                        width={1440}
-                      />
-                    </div>
-                  </a>
-                  <div className="p-5">
+                <article
+                  className="flex h-full flex-col overflow-hidden rounded-lg border border-[rgba(8,46,99,0.14)] bg-[#F7F7F5] transition duration-200 hover:-translate-y-[3px] hover:border-[rgba(201,155,60,0.45)]"
+                  key={project.id}
+                >
+                  <AnimatedProjectPreview
+                    displayUrl={project.displayUrl}
+                    flush
+                    image={project.image}
+                    imageMode="cover"
+                    liveBadge="LIVE PROJECT ↗"
+                    title={project.title}
+                    url={project.url}
+                    variant="card"
+                  />
+                  <div className="flex flex-1 flex-col p-5">
                     <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#C99B3C]">
                       {caseCopy[project.id].type}
                     </p>
                     <h3 className="mt-2 text-xl font-semibold text-[#071B33]">{project.title}</h3>
-                    <p className="mt-2 text-sm leading-6 text-[#0B2340]/70">
+                    <p className="mt-2 flex-1 text-sm leading-6 text-[#0B2340]/70">
                       {caseCopy[project.id].text}
                     </p>
-                    <a
-                      className="mt-4 inline-flex text-sm font-semibold text-[#082E63] underline-offset-4 hover:underline"
+                    <Button
+                      className="mt-5 w-full border-[#C99B3C]/45 text-[#071B33] hover:bg-[#C99B3C] hover:text-white sm:w-fit"
                       href={project.url}
                       rel="noopener noreferrer"
                       target="_blank"
+                      variant="secondary"
                     >
                       Сайтты ашу ↗
-                    </a>
+                    </Button>
                   </div>
                 </article>
               ))}
@@ -320,9 +374,9 @@ export default function AstanaWebsiteDevelopmentPage() {
           </div>
         </section>
 
-        <section className="px-5 py-14 sm:px-8 sm:py-16">
+        <section className="px-5 py-12 sm:px-8 sm:py-16">
           <div className="mx-auto max-w-7xl">
-            <h2 className="text-3xl font-semibold text-[#071B33]">Сайтты қалай жасаймыз?</h2>
+            <SectionHeading>Сайтты қалай жасаймыз?</SectionHeading>
             <div className="mt-7 grid gap-4 md:grid-cols-4">
               {process.map(([number, title, text]) => (
                 <article className="rounded-lg border border-[rgba(8,46,99,0.12)] bg-white p-5" key={number}>
@@ -335,14 +389,20 @@ export default function AstanaWebsiteDevelopmentPage() {
           </div>
         </section>
 
-        <section className="border-y border-[rgba(8,46,99,0.08)] bg-white px-5 py-14 sm:px-8 sm:py-16" id="faq">
+        <section className="border-y border-[rgba(8,46,99,0.08)] bg-white px-5 py-12 sm:px-8 sm:py-16" id="faq">
           <div className="mx-auto max-w-4xl">
-            <h2 className="text-3xl font-semibold text-[#071B33]">Жиі қойылатын сұрақтар</h2>
+            <SectionHeading>Жиі қойылатын сұрақтар</SectionHeading>
             <div className="mt-7 divide-y divide-[rgba(8,46,99,0.1)] rounded-lg border border-[rgba(8,46,99,0.12)] bg-[#F7F7F5]">
-              {faqs.map((faq) => (
-                <details className="group p-5" key={faq.question}>
-                  <summary className="cursor-pointer list-none text-base font-semibold text-[#071B33]">
-                    {faq.question}
+              {faqs.map((faq, index) => (
+                <details className="group p-5" key={faq.question} open={index === 0}>
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-semibold text-[#071B33]">
+                    <span>{faq.question}</span>
+                    <span className="text-xl leading-none text-[#C99B3C] group-open:hidden" aria-hidden="true">
+                      +
+                    </span>
+                    <span className="hidden text-xl leading-none text-[#C99B3C] group-open:inline" aria-hidden="true">
+                      −
+                    </span>
                   </summary>
                   <p className="mt-3 text-sm leading-6 text-[#0B2340]/70">{faq.answer}</p>
                 </details>
@@ -351,15 +411,14 @@ export default function AstanaWebsiteDevelopmentPage() {
           </div>
         </section>
 
-        <section className="bg-[#071B33] px-5 py-14 text-white sm:px-8 sm:py-16">
+        <section className="bg-[#071B33] px-5 py-12 text-white sm:px-8 sm:py-16">
           <div className="mx-auto grid max-w-7xl gap-7 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>
-              <h2 className="text-3xl font-semibold leading-tight sm:text-4xl">
-                Астанада сайт керек пе?
+              <h2 className="whitespace-pre-line text-3xl font-semibold leading-tight sm:text-4xl">
+                Астанада сайт керек пе?{"\n"}Жобаңызды талқылайық.
               </h2>
               <p className="mt-4 max-w-2xl whitespace-pre-line text-base leading-7 text-white/72">
-                Жобаңызды қысқаша айтып беріңіз —{"\n"}қай пакет сәйкес келетінін және қалай іске
-                асыратынымызды айтамыз.
+                Қандай сайт қажет екенін бірге анықтап,{"\n"}сізге сәйкес пакетті ұсынамыз.
               </p>
             </div>
             <Button className="w-full gap-2 sm:w-auto" href={whatsappUrl} rel="noopener noreferrer" target="_blank" variant="whatsapp">
@@ -369,7 +428,7 @@ export default function AstanaWebsiteDevelopmentPage() {
           </div>
         </section>
       </main>
-      <Footer t={kz} />
+      <Footer bottomLinks={footerLinks} t={kz} />
       <WhatsAppButton message={whatsappMessage} />
     </>
   );
