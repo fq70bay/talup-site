@@ -11,6 +11,7 @@ export function AnimatedProjectPreview({
   compact = false,
   displayUrl,
   imageMode = "scroll",
+  imageAlt,
   flush = false,
   variant = "default",
 }: {
@@ -21,6 +22,7 @@ export function AnimatedProjectPreview({
   compact?: boolean;
   displayUrl?: string;
   imageMode?: "scroll" | "cover";
+  imageAlt?: string;
   flush?: boolean;
   variant?: "default" | "card";
 }) {
@@ -89,7 +91,7 @@ export function AnimatedProjectPreview({
           </div>
         ) : (
           <Image
-            alt={`${title} website preview`}
+            alt={imageAlt ?? `${title} website preview`}
             className={
               imageMode === "cover"
                 ? "h-full w-full object-cover object-left-top transition-transform duration-200 group-hover:scale-[1.015]"

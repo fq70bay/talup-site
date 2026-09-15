@@ -5,38 +5,39 @@ import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { Button } from "@/components/ui/Button";
 import { getWhatsAppLink, siteConfig } from "@/config/siteConfig";
 import { projects } from "@/data/projects";
-import { kz } from "@/locales/kz";
+import { ru } from "@/locales/ru";
 import { Footer } from "@/sections/Footer";
-import { AstanaHeader } from "./AstanaHeader";
+import { AstanaHeader } from "../../site-zhasau-astana/AstanaHeader";
 
-const pageUrl = `${siteConfig.url}/site-zhasau-astana`;
-const ruPageUrl = `${siteConfig.url}/ru/sozdanie-saitov-astana`;
-const whatsappMessage = "Сәлеметсіз бе! Астанада сайт жасау бойынша ақпарат алғым келеді.";
+const pageUrl = `${siteConfig.url}/ru/sozdanie-saitov-astana`;
+const kkPageUrl = `${siteConfig.url}/site-zhasau-astana`;
+const whatsappMessage = "Здравствуйте! Хочу узнать подробнее о создании сайта в Астане через TalUp.";
 
 export const metadata: Metadata = {
-  title: "Астанада сайт жасау — бағасы 79 000 ₸-ден | TalUp",
+  title: "Создание сайтов в Астане — от 79 000 ₸ | TalUp",
   description:
-    "Астанада бизнеске және мамандарға сайт жасау. Landing page, бизнес сайт, портфолио. Бағасы 79 000 ₸-ден. Mobile, WhatsApp, KZ/RU және жариялау.",
+    "Создание сайтов в Астане для бизнеса и специалистов. Landing page, бизнес-сайты и портфолио от 79 000 ₸. Адаптивная версия, WhatsApp, KZ/RU и запуск сайта.",
   alternates: {
     canonical: pageUrl,
     languages: {
-      "kk-KZ": pageUrl,
-      "ru-KZ": ruPageUrl,
-      "x-default": pageUrl,
+      "kk-KZ": kkPageUrl,
+      "ru-KZ": pageUrl,
+      "x-default": kkPageUrl,
     },
   },
   openGraph: {
-    title: "Астанада сайт жасау | TalUp",
-    description: "Landing page, бизнес сайт және портфолио. 79 000 ₸-ден бастап.",
+    title: "Создание сайтов в Астане | TalUp",
+    description: "Landing page, бизнес-сайты и портфолио от 79 000 ₸. Адаптивно, WhatsApp и запуск под ключ.",
     url: pageUrl,
     siteName: "TalUp",
-    locale: "kk_KZ",
+    locale: "ru_KZ",
+    alternateLocale: "kk_KZ",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Астанада сайт жасау | TalUp",
-    description: "Landing page, бизнес сайт және портфолио. 79 000 ₸-ден бастап.",
+    title: "Создание сайтов в Астане | TalUp",
+    description: "Landing page, бизнес-сайты и портфолио от 79 000 ₸. Адаптивно, WhatsApp и запуск под ключ.",
   },
   robots: {
     index: true,
@@ -48,18 +49,25 @@ export const metadata: Metadata = {
   },
 };
 
+const navItems = [
+  { label: "Услуги", href: "#services" },
+  { label: "Цены", href: "#pricing" },
+  { label: "Проекты", href: "#cases" },
+  { label: "FAQ", href: "#faq" },
+];
+
 const siteTypes = [
   {
     title: "Landing Page",
-    text: "Бір өнімді немесе қызметті сатуға арналған бір беттік сайт.",
+    text: "Одностраничный сайт для продвижения одной услуги, продукта или предложения.",
   },
   {
-    title: "Бизнес сайт",
-    text: "Компания, қызметтер және артықшылықтарды көрсететін сайт.",
+    title: "Бизнес-сайт",
+    text: "Сайт для презентации компании, услуг и преимуществ.",
   },
   {
     title: "Портфолио",
-    text: "Маман, мұғалім немесе фрилансерге арналған кәсіби жеке сайт.",
+    text: "Профессиональный персональный сайт для специалиста, преподавателя или фрилансера.",
   },
 ];
 
@@ -67,132 +75,145 @@ const pricePlans = [
   {
     name: "START",
     price: "79 000 ₸",
-    text: "Портфолио, визитка және шағын сайт.",
-    cta: "START таңдау",
-    message: "Сәлеметсіз бе! TalUp START пакеті бойынша сайт жасатқым келеді.",
+    text: "Для портфолио, сайта-визитки или небольшого персонального сайта.",
+    cta: "Выбрать START",
+    message: "Здравствуйте! Хочу заказать сайт по пакету TalUp START.",
     includes: [
-      "1–3 негізгі бөлім",
-      "Портфолио немесе визитка",
-      "Mobile responsive",
-      "WhatsApp / байланыс",
-      "Vercel-де жариялау",
+      "1–3 основных раздела",
+      "Портфолио или визитка",
+      "Адаптивная версия",
+      "WhatsApp / контакты",
+      "Публикация сайта",
     ],
   },
   {
     name: "BUSINESS",
     price: "129 000 ₸",
-    text: "Толық бизнес landing page.",
-    cta: "BUSINESS таңдау",
-    message: "Сәлеметсіз бе! TalUp BUSINESS пакеті бойынша сайт жасатқым келеді.",
-    badge: "ТАНЫМАЛ",
+    text: "Для полноценного бизнес-лендинга или сайта услуг.",
+    cta: "Выбрать BUSINESS",
+    message: "Здравствуйте! Хочу заказать сайт по пакету TalUp BUSINESS.",
+    badge: "ПОПУЛЯРНЫЙ",
     includes: [
-      "4–6 негізгі бөлім",
-      "Қызметтер және артықшылықтар",
-      "WhatsApp интеграциясы",
-      "Mobile responsive",
-      "Негізгі SEO",
-      "Vercel-де жариялау",
+      "4–6 основных разделов",
+      "Услуги и преимущества",
+      "Интеграция WhatsApp",
+      "Адаптивная версия",
+      "Базовое SEO",
+      "Публикация сайта",
     ],
   },
   {
     name: "PRO",
     price: "179 000 ₸",
-    text: "KZ/RU, көбірек блок және кеңейтілген функционал.",
-    cta: "PRO таңдау",
-    message: "Сәлеметсіз бе! TalUp PRO пакеті бойынша сайт жасатқым келеді.",
+    text: "Для проектов с двумя языками, большим количеством блоков и расширенным функционалом.",
+    cta: "Выбрать PRO",
+    message: "Здравствуйте! Хочу заказать сайт по пакету TalUp PRO.",
     includes: [
       "KZ / RU",
-      "6+ бөлім",
-      "Кеңейтілген функционал",
-      "WhatsApp интеграциясы",
-      "Mobile responsive",
-      "Домен қосуға көмек",
-      "Негізгі SEO",
+      "6+ разделов",
+      "Расширенный функционал",
+      "Интеграция WhatsApp",
+      "Адаптивная версия",
+      "Помощь с подключением домена",
+      "Базовое SEO",
     ],
   },
 ];
 
 const advantages = [
   {
-    title: "Мобильге бейім",
-    text: "Сайт телефонда, планшетте және компьютерде дұрыс жұмыс істейді.",
+    title: "Адаптивный сайт",
+    text: "Корректно работает на телефоне, планшете и компьютере.",
   },
   {
-    title: "WhatsApp интеграциясы",
-    text: "Клиент сізге бір батырмамен жаза алады.",
+    title: "WhatsApp",
+    text: "Клиент может написать вам в один клик.",
   },
   {
     title: "KZ / RU",
-    text: "Қажет болса екі тілде жасаймыз.",
+    text: "При необходимости создаём двуязычную версию сайта.",
   },
   {
-    title: "Іске қосуға дайын",
-    text: "Сайтты жариялап, жұмысын тексеріп береміз.",
+    title: "Готов к запуску",
+    text: "Публикуем сайт и проверяем его работу перед передачей.",
   },
 ];
 
 const process = [
-  ["01", "Талқылау", "Мақсат пен қажетті сайт түрін анықтаймыз."],
-  ["02", "Құрылым", "Бөлімдер мен контентті жоспарлаймыз."],
-  ["03", "Жасау", "Дизайн және сайтты әзірлейміз."],
-  ["04", "Жариялау", "Сайтты интернетке шығарып, тексереміз."],
+  ["01", "Обсуждение", "Определяем задачу, аудиторию и тип сайта."],
+  ["02", "Структура", "Планируем разделы, контент и путь пользователя."],
+  ["03", "Разработка", "Создаём дизайн и реализуем сайт."],
+  ["04", "Запуск", "Публикуем сайт и проверяем его работу."],
 ];
 
 const faqs = [
   {
-    question: "Сайт жасау қанша тұрады?",
+    question: "Сколько стоит создание сайта в Астане?",
     answer:
-      "TalUp-та сайт бағасы 79 000 ₸-ден басталады. Нақты баға сайт көлемі мен функционалына байланысты.",
+      "Стоимость сайта в TalUp начинается от 79 000 ₸. Итоговая цена зависит от объёма и функционала проекта.",
   },
   {
-    question: "Landing page қанша уақытта дайын болады?",
+    question: "Сколько времени занимает создание landing page?",
     answer:
-      "Жобаның көлеміне және контенттің дайындығына байланысты. Нақты мерзімді тапсырманы талқылағаннан кейін айтамыз.",
+      "Срок зависит от объёма проекта и готовности контента. Точный срок определяем после обсуждения задачи.",
   },
   {
-    question: "Сайт телефонда жұмыс істей ме?",
-    answer: "Иә. Барлық сайт mobile responsive болып жасалады.",
+    question: "Будет ли сайт работать на телефоне?",
+    answer: "Да. Все сайты создаются адаптивными для смартфонов, планшетов и компьютеров.",
   },
   {
-    question: "Қазақша және орысша сайт жасауға бола ма?",
-    answer: "Иә. PRO пакетінде KZ/RU екі тілдік нұсқа жасауға болады.",
+    question: "Можно сделать сайт на казахском и русском языках?",
+    answer: "Да. В пакете PRO доступна версия KZ / RU.",
   },
   {
-    question: "Домен қосуға көмектесесіз бе?",
-    answer: "Иә. Доменді сайтқа қосуға және жариялауға көмектесеміз.",
+    question: "Помогаете подключить домен?",
+    answer: "Да. Помогаем подключить домен и опубликовать готовый сайт.",
   },
 ];
 
-const caseCopy: Record<string, { type: string; text: string }> = {
+const caseCopy: Record<string, { type: string; text: string; imageAlt: string }> = {
   "metall-invest": {
     type: "Commercial landing page",
-    text: "Инертті материалдар мен арнайы техника қызметіне арналған коммерциялық сайт.",
+    text: "Коммерческий сайт для компании, занимающейся инертными материалами и услугами спецтехники.",
+    imageAlt: "Превью сайта Metal Invest",
   },
   "farhat-teacher-portfolio": {
     type: "Personal portfolio website",
-    text: "Мұғалімнің тәжірибесі, жетістіктері және байланысын көрсететін жеке портфолио.",
+    text: "Персональный профессиональный сайт-портфолио для преподавателя.",
+    imageAlt: "Превью сайта-портфолио Farhat Teacher Portfolio",
   },
 };
 
 const footerLinks = [
-  { href: "/", label: "Басты бет" },
-  { href: "#services", label: "Қызметтер" },
-  { href: "#pricing", label: "Баға" },
-  { href: "#cases", label: "Жобалар" },
+  { href: "/", label: "Главная" },
+  { href: "#services", label: "Услуги" },
+  { href: "#pricing", label: "Цены" },
+  { href: "#cases", label: "Проекты" },
 ];
 
 function SectionHeading({ children }: { children: string }) {
   return <h2 className="text-3xl font-semibold leading-tight text-[#071B33] sm:text-4xl">{children}</h2>;
 }
 
-export default function AstanaWebsiteDevelopmentPage() {
+export default function RussianAstanaWebsiteDevelopmentPage() {
   const whatsappUrl = getWhatsAppLink(whatsappMessage);
   const pageProjects = projects.filter((project) => project.id in caseCopy);
 
   return (
     <>
-      <AstanaHeader whatsappUrl={whatsappUrl} />
-      <main className="bg-[#F7F7F5] text-[#0B2340]">
+      <AstanaHeader
+        ariaLabel="TalUp главная"
+        closeLabel="Закрыть"
+        ctaLabel="Начать проект"
+        languageLinks={[
+          { href: "/site-zhasau-astana", label: "KZ" },
+          { active: true, href: "/ru/sozdanie-saitov-astana", label: "RU" },
+        ]}
+        menuLabel="Меню"
+        navItems={navItems}
+        whatsappUrl={whatsappUrl}
+      />
+      <main className="bg-[#F7F7F5] text-[#0B2340]" lang="ru">
         <section className="border-b border-[rgba(8,46,99,0.08)] px-5 py-12 sm:px-8 sm:py-16 lg:py-20">
           <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_0.92fr] lg:items-center">
             <div>
@@ -200,27 +221,25 @@ export default function AstanaWebsiteDevelopmentPage() {
                 TALUP • WEB STUDIO
               </p>
               <h1 className="max-w-3xl text-4xl font-semibold leading-tight text-[#071B33] sm:text-5xl lg:text-6xl">
-                Астанада сайт жасау
+                Создание сайтов в Астане
               </h1>
               <p className="mt-5 max-w-2xl text-lg leading-8 text-[#0B2340]/72">
-                Бизнеске, қызмет көрсетуге және жеке мамандарға арналған заманауи сайттар
-                жасаймыз.
+                Создаём современные сайты для бизнеса, сферы услуг и специалистов.
               </p>
               <p className="mt-3 max-w-2xl text-lg leading-8 text-[#0B2340]/72">
-                Қазақша және орысша, мобильге бейімделген, WhatsApp өтінімімен және іске
-                қосуға дайын.
+                Адаптивно для телефона и компьютера, с WhatsApp и готовностью к запуску.
               </p>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                 <Button className="gap-2" href={whatsappUrl} rel="noopener noreferrer" target="_blank" variant="whatsapp">
                   <WhatsAppIcon className="h-4 w-4" />
-                  WhatsApp арқылы тапсырыс беру
+                  Заказать сайт в WhatsApp
                 </Button>
                 <Button href="#cases" variant="secondary">
-                  Жобаларды көру
+                  Посмотреть проекты
                 </Button>
               </div>
               <p className="mt-5 text-sm font-semibold text-[#0B2340]/55">
-                79 000 ₸-ден • KZ / RU • Mobile • WhatsApp
+                от 79 000 ₸ • Адаптивно • WhatsApp • KZ / RU
               </p>
             </div>
             <div className="rounded-lg border border-[rgba(8,46,99,0.12)] bg-white p-3">
@@ -230,6 +249,7 @@ export default function AstanaWebsiteDevelopmentPage() {
                     displayUrl={project.displayUrl}
                     flush
                     image={project.image}
+                    imageAlt={caseCopy[project.id].imageAlt}
                     imageMode="cover"
                     key={project.id}
                     liveBadge="LIVE PROJECT ↗"
@@ -245,7 +265,7 @@ export default function AstanaWebsiteDevelopmentPage() {
 
         <section className="px-5 py-12 sm:px-8 sm:py-16" id="services">
           <div className="mx-auto max-w-7xl">
-            <SectionHeading>Қандай сайттар жасаймыз?</SectionHeading>
+            <SectionHeading>Какие сайты мы создаём?</SectionHeading>
             <div className="mt-7 grid gap-4 md:grid-cols-3">
               {siteTypes.map((item, index) => (
                 <article
@@ -265,7 +285,7 @@ export default function AstanaWebsiteDevelopmentPage() {
 
         <section className="border-y border-[rgba(8,46,99,0.08)] bg-white px-5 py-12 sm:px-8 sm:py-16" id="pricing">
           <div className="mx-auto max-w-7xl">
-            <SectionHeading>Сайт жасау бағасы</SectionHeading>
+            <SectionHeading>Стоимость создания сайта</SectionHeading>
             <div className="mt-7 grid gap-4 lg:grid-cols-3">
               {pricePlans.map((plan) => {
                 const highlighted = plan.name === "BUSINESS";
@@ -322,7 +342,7 @@ export default function AstanaWebsiteDevelopmentPage() {
 
         <section className="px-5 py-12 sm:px-8 sm:py-16">
           <div className="mx-auto max-w-7xl">
-            <SectionHeading>TalUp-пен сайт жасаудың артықшылықтары</SectionHeading>
+            <SectionHeading>Почему выбирают TalUp?</SectionHeading>
             <div className="mt-7 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
               {advantages.map((item, index) => (
                 <article className="rounded-lg border border-[rgba(8,46,99,0.12)] bg-white p-5" key={item.title}>
@@ -339,7 +359,7 @@ export default function AstanaWebsiteDevelopmentPage() {
 
         <section className="border-y border-[rgba(8,46,99,0.08)] bg-white px-5 py-12 sm:px-8 sm:py-16" id="cases">
           <div className="mx-auto max-w-7xl">
-            <SectionHeading>Жасалған сайттар</SectionHeading>
+            <SectionHeading>Наши работы</SectionHeading>
             <div className="mt-7 grid items-stretch gap-6 lg:grid-cols-2">
               {pageProjects.map((project) => (
                 <article
@@ -350,6 +370,7 @@ export default function AstanaWebsiteDevelopmentPage() {
                     displayUrl={project.displayUrl}
                     flush
                     image={project.image}
+                    imageAlt={caseCopy[project.id].imageAlt}
                     imageMode="cover"
                     liveBadge="LIVE PROJECT ↗"
                     title={project.title}
@@ -371,7 +392,7 @@ export default function AstanaWebsiteDevelopmentPage() {
                       target="_blank"
                       variant="secondary"
                     >
-                      Сайтты ашу ↗
+                      Открыть сайт ↗
                     </Button>
                   </div>
                 </article>
@@ -382,7 +403,7 @@ export default function AstanaWebsiteDevelopmentPage() {
 
         <section className="px-5 py-12 sm:px-8 sm:py-16">
           <div className="mx-auto max-w-7xl">
-            <SectionHeading>Сайтты қалай жасаймыз?</SectionHeading>
+            <SectionHeading>Как мы создаём сайт?</SectionHeading>
             <div className="mt-7 grid gap-4 md:grid-cols-4">
               {process.map(([number, title, text]) => (
                 <article className="rounded-lg border border-[rgba(8,46,99,0.12)] bg-white p-5" key={number}>
@@ -397,7 +418,7 @@ export default function AstanaWebsiteDevelopmentPage() {
 
         <section className="border-y border-[rgba(8,46,99,0.08)] bg-white px-5 py-12 sm:px-8 sm:py-16" id="faq">
           <div className="mx-auto max-w-4xl">
-            <SectionHeading>Жиі қойылатын сұрақтар</SectionHeading>
+            <SectionHeading>Часто задаваемые вопросы</SectionHeading>
             <div className="mt-7 divide-y divide-[rgba(8,46,99,0.1)] rounded-lg border border-[rgba(8,46,99,0.12)] bg-[#F7F7F5]">
               {faqs.map((faq, index) => (
                 <details className="group p-5" key={faq.question} open={index === 0}>
@@ -421,20 +442,20 @@ export default function AstanaWebsiteDevelopmentPage() {
           <div className="mx-auto grid max-w-7xl gap-7 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>
               <h2 className="whitespace-pre-line text-3xl font-semibold leading-tight sm:text-4xl">
-                Астанада сайт керек пе?{"\n"}Жобаңызды талқылайық.
+                Нужен сайт в Астане?{"\n"}Обсудим ваш проект.
               </h2>
               <p className="mt-4 max-w-2xl whitespace-pre-line text-base leading-7 text-white/72">
-                Қандай сайт қажет екенін бірге анықтап,{"\n"}сізге сәйкес пакетті ұсынамыз.
+                Расскажите, какой сайт вам нужен —{"\n"}подберём подходящий пакет и предложим решение.
               </p>
             </div>
             <Button className="w-full gap-2 sm:w-auto" href={whatsappUrl} rel="noopener noreferrer" target="_blank" variant="whatsapp">
               <WhatsAppIcon className="h-4 w-4" />
-              WhatsApp арқылы жазу
+              Написать в WhatsApp
             </Button>
           </div>
         </section>
       </main>
-      <Footer bottomLinks={footerLinks} t={kz} />
+      <Footer bottomLinks={footerLinks} t={ru} />
       <WhatsAppButton message={whatsappMessage} />
     </>
   );

@@ -15,5 +15,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.9,
     },
+    {
+      url: `${siteConfig.url}/ru/sozdanie-saitov-astana`,
+      lastModified: new Date("2026-09-15"),
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
   ];
 }
