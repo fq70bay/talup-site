@@ -47,7 +47,24 @@ export function AstanaHeader({
             </a>
           ))}
         </nav>
-        <div className="hidden lg:block">
+        <div className="hidden items-center gap-3 lg:flex">
+          {languageLinks ? (
+            <div className="flex rounded-md border border-[rgba(8,46,99,0.14)] p-1">
+              {languageLinks.map((link) => (
+                <a
+                  className={`inline-flex h-8 min-w-10 items-center justify-center rounded px-2.5 text-xs font-bold uppercase tracking-[0.08em] transition ${
+                    link.active
+                      ? "bg-[#C99B3C] text-white"
+                      : "text-[#082E63] hover:bg-white hover:text-[#071B33]"
+                  }`}
+                  href={link.href}
+                  key={link.label}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          ) : null}
           <a
             className="inline-flex min-h-10 items-center gap-2 rounded-md border border-[#25D366] bg-[#25D366] px-4 text-sm font-semibold text-[#06351D] transition hover:bg-[#1DB954]"
             href={whatsappUrl}

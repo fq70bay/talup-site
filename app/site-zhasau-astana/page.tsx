@@ -191,7 +191,14 @@ export default function AstanaWebsiteDevelopmentPage() {
 
   return (
     <>
-      <AstanaHeader whatsappUrl={whatsappUrl} />
+      <AstanaHeader
+        ctaLabel="Жоба бастау"
+        languageLinks={[
+          { active: true, href: "/site-zhasau-astana", label: "KZ" },
+          { href: "/ru/sozdanie-saitov-astana", label: "RU" },
+        ]}
+        whatsappUrl={whatsappUrl}
+      />
       <main className="bg-[#F7F7F5] text-[#0B2340]">
         <section className="border-b border-[rgba(8,46,99,0.08)] px-5 py-12 sm:px-8 sm:py-16 lg:py-20">
           <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_0.92fr] lg:items-center">
